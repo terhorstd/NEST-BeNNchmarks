@@ -5,3 +5,31 @@ benchmarks:
     script_path: hpc_benchmark/hpc_benchmark3.py  # relative to model repo root
     config_path: hpc_benchmark/hpc_benchmark.yml  # relative to config repo root
   # microcircuit:
+requirements:  # TODO: Is this really the best place for such a config?
+  hifis:
+    pip: []
+    modules: []
+    apt:
+      - cmake
+      - gsl-bin
+      - libgsl-dev
+      - libboost-dev
+      - cython3
+      - libreadline-dev
+      - python3-all-dev
+      - python3-numpy
+      - python3-scipy
+      - python3-matplotlib
+      - python3-nose
+      - python3-junitparser
+      - ipython3
+      - python3-future
+      - openmpi-bin
+      - libopenmpi-dev
+      - python3-mpi4py
+      - libmusic-dev
+      - music-bin
+      - python3-pip
+      - python3-pytest
+      - python3-pytest-timeout
+      - python3-pytest-xdist
