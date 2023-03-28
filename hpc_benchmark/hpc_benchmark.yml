@@ -16,8 +16,8 @@
 
 include-path:
   path: []
-#    - ../helpers/
-#    - ../config/
+   - ../helpers/
+   - ../config/
 
 # model-specific name and output path
 name: HPC
