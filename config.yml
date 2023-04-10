@@ -6,7 +6,6 @@ benchmarks:
   hpc_benchmark:
     repository: common
     model_dir: hpc_benchmark  # path to model directory inside repository
-    script_path: hpc_benchmark3.py  # relative to model path
     jube_path: hpc_benchmark/hpc_benchmark.yml  # relative to config repo root
     config_path: hpc_benchmark/hpc_benchmark_config.yml  # relative to config repo root
   # microcircuit:
