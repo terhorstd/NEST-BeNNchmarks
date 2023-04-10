@@ -8,7 +8,16 @@ benchmarks:
     model_dir: hpc_benchmark  # path to model directory inside repository
     jube_path: hpc_benchmark/hpc_benchmark.yml  # relative to config repo root
     config_path: hpc_benchmark/hpc_benchmark_config.yml  # relative to config repo root
-  # microcircuit:
+  microcircuit:
+    repository: common
+    model_dir: Potjans_2014
+    jube_path: microcircuit/microcircuit.yml
+    config_path: microcircuit/microcircuit_config.yml
+  multi_area:
+    repository: common
+    model_dir: multi-area-model
+    jube_path: multi_area/multi_area.yml
+    config_path: multi_area/multi_area_config.yml
 user_config:
   hifis:
     project: ""
