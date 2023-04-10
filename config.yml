@@ -1,8 +1,11 @@
+repositories:
+  common:
+    url: https://github.com/INM-6/beNNch-models.git
+    branch: main
 benchmarks:
   hpc_benchmark:
-    repository: https://github.com/INM-6/beNNch-models.git  # TODO: Maybe define global repos somewhere which can be referenced at multiple places
-    branch: main
-    model_path: hpc_benchmark  # path to model directory inside repository
+    repository: common
+    model_dir: hpc_benchmark  # path to model directory inside repository
     script_path: hpc_benchmark3.py  # relative to model path
     jube_path: hpc_benchmark/hpc_benchmark.yml  # relative to config repo root
     config_path: hpc_benchmark/hpc_benchmark_config.yml  # relative to config repo root
