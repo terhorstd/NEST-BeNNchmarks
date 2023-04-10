@@ -16,4 +16,3 @@ model_parameters:
 
 machines:
   jureca: "jureca.yml"
-  hifis: "hifis.yml"
