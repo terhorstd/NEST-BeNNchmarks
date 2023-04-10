@@ -6,4 +6,4 @@ machine_parameters:
   - {name: tasks_per_node, type: int, _: "1"}
   - {name: threads_per_task, type: int, _: "64"}
   - {name: walltime, type: string, _: "00:30:00"}
-  - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --hint=nomultithread"}  # processor affinity/pinning
+  - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
