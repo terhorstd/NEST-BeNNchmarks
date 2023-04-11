@@ -1,6 +1,8 @@
 machine_parameters:
   - {name: num_nodes, type: int, _: "1,2"}
-  - {name: tasks_per_node, type: int, _: "1,4,32,128"}
-  - {name: threads_per_task, type: int, _: "1,4,8,64"}
+  #- {name: tasks_per_node, type: int, _: "1,4,32,128"}
+  #- {name: threads_per_task, type: int, _: "1,4,8,64"}
+  - {name: tasks_per_node, type: int, _: "1"}
+  - {name: threads_per_task, type: int, _: "64"}
   - {name: walltime, type: string, _: "00:05:00"}
   - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
