@@ -1,5 +1,5 @@
 machine_parameters:
-  - {name: num_nodes, type: int, _: "1"}
+  - {name: num_nodes, type: int, _: "1,2,4,8"}
   - {name: tasks_per_node, type: int, _: "2"}
   - {name: threads_per_task, type: int, _: "1,2,4,8,16,32,64"}
   # - {name: tasks_per_node, type: int, _: "1"}
