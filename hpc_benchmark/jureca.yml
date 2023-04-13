@@ -1,7 +1,7 @@
 machine_parameters:
   - {name: num_nodes, type: int, _: "1,2,4,8"}
   - {name: tasks_per_node, type: int, _: "2"}
-  - {name: threads_per_task, type: int, _: "1,4,8,64"}
+  - {name: threads_per_task, type: int, _: "1,2,4,8,16,32,64"}
   # - {name: tasks_per_node, type: int, _: "1"}
   # - {name: threads_per_task, type: int, _: "64"}
   - {name: walltime, type: string, _: "00:07:00"}
