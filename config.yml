@@ -6,17 +6,14 @@ benchmarks:
   hpc_benchmark:
     repository: common
     model_dir: hpc_benchmark  # path to model directory inside repository
-    jube_path: hpc_benchmark/hpc_benchmark.yml  # relative to config repo root
     config_path: hpc_benchmark/hpc_benchmark_config.yml  # relative to config repo root
   microcircuit:
     repository: common
     model_dir: Potjans_2014
-    jube_path: microcircuit/microcircuit.yml
     config_path: microcircuit/microcircuit_config.yml
   multi_area:
     repository: common
     model_dir: multi-area-model
-    jube_path: multi_area/multi_area.yml
     config_path: multi_area/multi_area_config.yml
 user_config:
   hifis:
@@ -28,45 +25,4 @@ user_config:
     project: "cjinb33"  # account name for jutil env
     account: "jinb33"  # slurm account name for job submission
     email_address: "j.vogelsang@fz-juelich.de"  # (optional) email address to which slurm sends START, END, FAIL emails for job progress info
-    partition: "dc-cpu"  # (optional, required on some machines) cluster partition, takes system default if left empty 
-requirements:  # TODO: Is this really the best place for such a config?
-  jureca:
-    modules:
-      - Stages/2023
-      - GCCcore/.11.3.0
-      - GCC/11.3.0
-      - CMake/3.23.1
-      - ParaStationMPI/5.8.0-1
-      - Python/3.10.4
-      - SciPy-bundle/2022.05
-      - matplotlib/3.5.2
-      - mpi4py/3.1.4
-      - GSL/2.7
-      - jemalloc/5.3.0
-      - Boost/1.79.0
-      - Autotools/20220317
-  hifis:
-    apt:
-      - cmake
-      - gsl-bin
-      - libgsl-dev
-      - libboost-dev
-      - cython3
-      - libreadline-dev
-      - python3-all-dev
-      - python3-numpy
-      - python3-scipy
-      - python3-matplotlib
-      - python3-nose
-      - python3-junitparser
-      - ipython3
-      - python3-future
-      - openmpi-bin
-      - libopenmpi-dev
-      - python3-mpi4py
-      - libmusic-dev
-      - music-bin
-      - python3-pip
-      - python3-pytest
-      - python3-pytest-timeout
-      - python3-pytest-xdist
+    partition: "dc-cpu"  # (optional, required on some machines) cluster partition, takes system default if left empty
