@@ -10,3 +10,4 @@ model_parameters:
   - {name: scaling_type, type: string, _: "strong"}       # can be either weak or strong
 run_parameters:
   log_path: ""
+  script_path: hpc_benchmark.py
