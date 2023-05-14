@@ -1,3 +1,5 @@
+machines:
+  jureca: "jureca.yml"
 model_parameters:
   - {name: model_name, type: string, _: "multi-area-model"}  # for identifying the model, can be any unique string
   - {name: network_state, type: string, _: "metastable"}  # can be either "metastable" or "ground"
@@ -9,11 +11,42 @@ model_parameters:
   - {name: rng_seed, _: "55"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
   - {name: scaling_type, _: "strong"}  # can be either weak or strong
 run_parameters:
-  - name: optional_run_command
-    type: string
-    _:
-      data_folder_hash=`uuidgen`
-      srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${data_path} ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
-  - {name: run_args, type: string, _: "${data_path} ${data_folder_hash} ${network_state}"}
-machines:
-  jureca: "jureca.yml"
+  log_path: "data"
+  optional_run_command: |+
+    data_folder_hash=$(uuidgen)
+    srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${jube_wp_abspath}/data ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
+  run_args: ${jube_wp_abspath}/data ${data_folder_hash} ${network_state}
+metrics:
+  - rng_seed
+  - num_nodes
+  - threads_per_task
+  - tasks_per_node
+  - model_time_sim
+  - wall_time_create
+  - wall_time_connect
+  - wall_time_sim
+  - wall_time_phase_collocate
+  - wall_time_phase_communicate
+  - wall_time_phase_deliver
+  - wall_time_phase_update
+  - wall_time_communicate_target_data
+  - wall_time_gather_spike_data
+  - wall_time_gather_target_data
+  - wall_time_communicate_prepare
+  - py_time_kernel_prepare
+  - py_time_network_local
+  - py_time_network_global
+  - py_time_simulate
+  - py_time_presimulate
+  - py_time_network_prepare
+  - py_time_create
+  - py_time_connect_area
+  - py_time_connect_cc
+  - py_time_connect
+metrics_sum:
+  - base_memory
+  - network_memory
+  - init_memory
+  - total_memory
+  - num_connections
+  - local_spike_counter
