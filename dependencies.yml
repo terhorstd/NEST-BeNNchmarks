@@ -1,0 +1,15 @@
+jureca:
+  modules:
+    - Stages/2023
+    - GCCcore/.11.3.0
+    - GCC/11.3.0
+    - CMake/3.23.1
+    - ParaStationMPI/5.8.0-1
+    - Python/3.10.4
+    - SciPy-bundle/2022.05
+    - matplotlib/3.5.2
+    - mpi4py/3.1.4
+    - GSL/2.7
+    - jemalloc/5.3.0
+    - Boost/1.79.0
+    - Autotools/20220317

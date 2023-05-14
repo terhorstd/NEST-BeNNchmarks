@@ -8,8 +8,12 @@ model_parameters:
   - {name: scale_K, type: float, _: "1."}  # scaling the indegree, 1. -> original model
   - {name: rng_seed, _: "55"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
   - {name: scaling_type, _: "strong"}  # can be either weak or strong
-
-
+run_parameters:
+  - name: optional_run_command
+    type: string
+    _:
+      data_folder_hash=`uuidgen`
+      srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${data_path} ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
+  - {name: run_args, type: string, _: "${data_path} ${data_folder_hash} ${network_state}"}
 machines:
   jureca: "jureca.yml"
-	
