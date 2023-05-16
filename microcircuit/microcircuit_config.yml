@@ -1,7 +1,6 @@
 machines:
   jureca: "jureca.yml"
 model_parameters:
-  - {name: model_name, type: string, _: "microcircuit"}  # for identifying the model, can be any unique string
   - {name: net_params, type: string, _: "network_params.py"}  # default network parameters
   - {name: scale_N, type: float, _: "1."}  # scaling the number of neurons, 1. -> original model
   - {name: scale_K, type: float, _: "1."}  # scaling the indegree, 1. -> original model
