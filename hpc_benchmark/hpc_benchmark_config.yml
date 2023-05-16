@@ -1,7 +1,6 @@
 machines:
   jureca: "jureca.yml"
 model_parameters:
-  - {name: model_name, type: string, _: "hpc-benchmark"}  # for identifying the model, can be any unique string
   - {name: model_time_sim, type: float, _: "900."}        # biological time to be simulated in ms
   - {name: model_time_presim, type: float, _: "100."}     # presimulation time for avoiding initial transients in ms
   - {name: scale_N, type: float, _: "1."}                 # scaling the number of neurons, 1. -> original model
