@@ -16,12 +16,13 @@ run_parameters:
     data_folder_hash=$(uuidgen)
     srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${jube_wp_abspath}/data ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
   run_args: ${jube_wp_abspath}/data ${data_folder_hash} ${network_state}
-metrics:
+results:
   - rng_seed
   - num_nodes
   - threads_per_task
   - tasks_per_node
   - model_time_sim
+metrics:
   - time_construction_create
   - time_construction_connect
   - time_simulate

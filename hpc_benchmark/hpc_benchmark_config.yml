@@ -9,12 +9,13 @@ model_parameters:
   - {name: scaling_type, type: string, _: "strong"}       # can be either weak or strong
 run_parameters:
   script_path: hpc_benchmark.py
-metrics:
+results:
   - rng_seed
   - num_nodes
   - threads_per_task
   - tasks_per_node
   - model_time_sim
+metrics:
   - time_construction_create
   - time_construction_connect
   - time_simulate
@@ -43,3 +44,4 @@ metrics_sum:
   - total_memory
   - num_connections
   - local_spike_counter
+
