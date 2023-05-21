@@ -15,17 +15,17 @@ metrics:
   - threads_per_task
   - tasks_per_node
   - model_time_sim
-  - wall_time_create
-  - wall_time_connect
-  - wall_time_sim
-  - wall_time_phase_collocate
-  - wall_time_phase_communicate
-  - wall_time_phase_deliver
-  - wall_time_phase_update
-  - wall_time_communicate_target_data
-  - wall_time_gather_spike_data
-  - wall_time_gather_target_data
-  - wall_time_communicate_prepare
+  - time_construction_create
+  - time_construction_connect
+  - time_simulate
+  - time_collocate_spike_data
+  - time_communicate_spike_data
+  - time_deliver_spike_data
+  - time_update
+  - time_communicate_target_data
+  - time_gather_spike_data
+  - time_gather_target_data
+  - time_communicate_prepare
   - py_time_kernel_prepare
   - py_time_network_local
   - py_time_network_global
