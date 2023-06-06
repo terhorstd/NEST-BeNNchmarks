@@ -16,3 +16,4 @@ jureca:
     - git/2.36.0-nodocs
     - IPython/8.5.0
     - PyYAML/6.0
+    - JUBE/2.5.1
