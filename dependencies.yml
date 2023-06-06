@@ -13,3 +13,6 @@ jureca:
     - jemalloc/5.3.0
     - Boost/1.79.0
     - Autotools/20220317
+    - git/2.36.0-nodocs
+    - IPython/8.5.0
+    - PyYAML/6.0
