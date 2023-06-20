@@ -18,11 +18,13 @@ run_parameters:
   log_path: "data"
   script_path: bm_run_microcircuit.py
 results:
+  - scale
   - rng_seed
   - num_nodes
   - threads_per_task
   - tasks_per_node
   - model_time_sim
+  - model_time_presim
 metrics:
   - time_construction_create
   - time_construction_connect
