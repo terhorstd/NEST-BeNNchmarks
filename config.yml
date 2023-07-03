@@ -22,4 +22,10 @@ user_config:
     account: ""  # slurm account name for job submission
     email_address: "j.vogelsang@fz-juelich.de"  # (optional) email address to which slurm sends START, END, FAIL emails for job progress info
     partition: "dc-cpu"  # cluster partition, takes system default if left empty
+  jusuf:
+    compute-project: "cjinb33"
+    data-project: "djinb33"
+    account:  "icei-hbp-2020-0005"
+    email_address: ""
+    partition: "batch"
 dependencies: dependencies.yml
