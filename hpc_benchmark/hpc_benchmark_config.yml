@@ -1,5 +1,6 @@
 machines:
   jureca: "jureca.yml"
+  jusuf: "jusuf.yml"
 model_parameters:
   - {name: model_time_sim, type: float, _: "900."}        # biological time to be simulated in ms
   - {name: model_time_presim, type: float, _: "100."}     # presimulation time for avoiding initial transients in ms
