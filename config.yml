@@ -190,17 +190,5 @@ benchmarks:
       - total_memory
       - num_connections
       - local_spike_counter
-user_config:
-  jureca:
-    compute-project: "cjinb33"  # account name for jutil env (for SCRATCH)
-    data-project: "djinb33"  # account name for jutil env (for USERSOFTWARE)
-    account: ""  # slurm account name for job submission
-    email_address: "j.vogelsang@fz-juelich.de"  # (optional) email address to which slurm sends START, END, FAIL emails for job progress info
-    partition: "dc-cpu"  # cluster partition, takes system default if left empty
-  jusuf:
-    compute-project: "cjinb33"
-    data-project: "djinb33"
-    account:  "icei-hbp-2020-0005"
-    email_address: ""
-    partition: "batch"
+user_config: user_config.yml
 dependencies: dependencies.yml
