@@ -27,7 +27,7 @@ benchmarks:
       - {name: rng_seed, type: int, _: "42"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
       - {name: scaling_type, type: string, _: "strong"}       # can be either weak or strong
       run_parameters:
-      script_path: hpc_benchmark.py
+        script_path: hpc_benchmark.py
       results:
       - scale
       - rng_seed
