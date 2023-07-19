@@ -19,16 +19,16 @@ benchmarks:
         - {name: threads_per_task, type: int, _: "64"}
         - {name: walltime, type: string, _: "00:01:00"}
         - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
-      model_parameters:
+    model_parameters:
       - {name: model_time_sim, type: float, _: "90."}        # biological time to be simulated in ms
       - {name: model_time_presim, type: float, _: "10."}     # presimulation time for avoiding initial transients in ms
       - {name: scale_N, type: float, _: "0.01"}                 # scaling the number of neurons, 1. -> original model
       - {name: record_spikes, type: string, _: "False"}       # whether to write spiking output to file, either True or False
       - {name: rng_seed, type: int, _: "42"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
       - {name: scaling_type, type: string, _: "strong"}       # can be either weak or strong
-      run_parameters:
-        script_path: hpc_benchmark.py
-      results:
+    run_parameters:
+      script_path: hpc_benchmark.py
+    results:
       - scale
       - rng_seed
       - num_nodes
@@ -36,7 +36,7 @@ benchmarks:
       - tasks_per_node
       - model_time_sim
       - model_time_presim
-      metrics:
+    metrics:
       - time_construction_create
       - time_construction_connect
       - time_simulate
@@ -58,7 +58,7 @@ benchmarks:
       - py_time_connect_area
       - py_time_connect_cc
       - py_time_connect
-      metrics_sum:
+    metrics_sum:
       - base_memory
       - network_memory
       - init_memory
