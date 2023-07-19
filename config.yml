@@ -190,5 +190,15 @@ benchmarks:
       - total_memory
       - num_connections
       - local_spike_counter
-user_config: user_config.yml
+user_config:
+  jureca:
+    compute-project: "cjinb33"  # account name for jutil env (for SCRATCH)
+    data-project: "djinb33"  # account name for jutil env (for USERSOFTWARE)
+    account: "jinb33"  # slurm account name for job submission
+    partition: "dc-cpu"  # cluster partition, takes system default if left empty
+  jusuf:
+    compute-project: "cjinb33"
+    data-project: "djinb33"
+    account:  "icei-hbp-2020-0005"
+    partition: "batch"
 dependencies: dependencies.yml
