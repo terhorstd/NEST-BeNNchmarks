@@ -17,6 +17,10 @@ jureca:
     - IPython/8.5.0
     - PyYAML/6.0
     - JUBE/2.5.1
+  pip:
+    - future
+    - nested_dict
+    - dicthash
 jusuf:
   modules:
     - Stages/2023
@@ -36,3 +40,7 @@ jusuf:
     - IPython/8.5.0
     - PyYAML/6.0
     - JUBE/2.5.1
+  pip:
+    - future
+    - nested_dict
+    - dicthash
