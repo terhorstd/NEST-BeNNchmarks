@@ -213,4 +213,4 @@ user_config:
     data-project: "djinb33"
     account:  "icei-hbp-2020-0005"
     partition: "batch"
-dependencies: dependencies.yml
+dependencies: dependencies2.yml
