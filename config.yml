@@ -165,9 +165,7 @@ benchmarks:
       script_path: run_benchmark.py
       optional_run_command: |+
         data_folder_hash=$(uuidgen)
-        echo $model_path
-        echo $jube_wp_abspath
-        echo $data_folder_hash
+        mkdir -p ${jube_wp_abspath}/data/${data_folder_hash}
         srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${jube_wp_abspath}/data ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
       run_args: ${jube_wp_abspath}/data ${data_folder_hash} ${network_state}
     results:
