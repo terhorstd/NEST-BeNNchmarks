@@ -88,7 +88,7 @@ benchmarks:
       - {name: poisson_input, type: string, _: "False"}  # choose Poisson or DC input
       - {name: V0_type, type: text, _: "'optimized'"}  # choose default or optimized initial conditions for the membrane potential
       - {name: synapse_type, type: text, _: "'static_synapse'"}  # type of synapses in the model
-      - {name: sim_params, _: sim_params.py}  # default simulation parameters
+      - {name: sim_params, _: "sim_params.py"}  # default simulation parameters
       - {name: model_time_sim, type: float, _: "100."}  # biological time to be simulated in ms
       - {name: model_time_presim, _: "50."}  # in ms
       - {name: rng_seed, _: "55"}  # rng seed
