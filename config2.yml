@@ -1,217 +1,74 @@
 repositories:
-  common:
-    url: https://github.com/JanVogelsang/ci-bennch-models.git
-    branch: main
+  base:
+    url: https://github.com/JanVogelsang/CI-Bennch-config.git
+    branch: root
+extends:
+  repo: base
+  config_file: config2.yml
 benchmarks:
   hpc_benchmark:
-    repository: common
-    model_dir: hpc_benchmark  # path to model directory inside repository
     machine_parameters:
       jureca:
-        - {name: num_nodes, type: int, _: "4,8,12,24,32,64"}
+        - {name: num_nodes, type: int, _: "1"}
         - {name: tasks_per_node, type: int, _: "2"}
         - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "00:02:00"}
+        - {name: walltime, type: string, _: "00:01:00"}
         - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
       jusuf:
-        - {name: num_nodes, type: int, _: "4,8,12,24,32,64"}
+        - {name: num_nodes, type: int, _: "1"}
         - {name: tasks_per_node, type: int, _: "2"}
         - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "00:02:00"}
+        - {name: walltime, type: string, _: "00:01:00"}
         - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
-    model_parameters:
-      - {name: model_time_sim, type: float, _: "1000."}        # biological time to be simulated in ms
-      - {name: model_time_presim, type: float, _: "500."}     # presimulation time for avoiding initial transients in ms
-      - {name: scale_N, type: float, _: "8."}                 # scaling the number of neurons, 1. -> original model
-      - {name: record_spikes, type: string, _: "False"}       # whether to write spiking output to file, either True or False
-      - {name: rng_seed, type: int, _: "654,55,92743"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
-      - {name: scaling_type, type: string, _: "weak"}       # can be either weak or strong
-    run_parameters:
-      script_path: hpc_benchmark_2.py
-    results:
-      - scale
-      - rng_seed
-      - num_nodes
-      - threads_per_task
-      - tasks_per_node
-      - model_time_sim
-      - model_time_presim
-    metrics:
-      - time_construction_create
-      - time_construction_connect
-      - time_simulate
-      - time_collocate_spike_data
-      - time_communicate_spike_data
-      - time_deliver_spike_data
-      - time_update
-      - time_communicate_target_data
-      - time_gather_spike_data
-      - time_gather_target_data
-      - time_communicate_prepare
-      - py_time_kernel_prepare
-      - py_time_network_local
-      - py_time_network_global
-      - py_time_simulate
-      - py_time_presimulate
-      - py_time_network_prepare
-      - py_time_create
-      - py_time_connect_area
-      - py_time_connect_cc
-      - py_time_connect
-    metrics_sum:
-      - base_memory
-      - network_memory
-      - init_memory
-      - total_memory
-      - num_connections
-      - local_spike_counter
+      model_parameters:
+        - {name: model_time_sim, type: float, _: "90."}        # biological time to be simulated in ms
+        - {name: model_time_presim, type: float, _: "10."}     # presimulation time for avoiding initial transients in ms
+        - {name: scale_N, type: float, _: "0.01"}                 # scaling the number of neurons, 1. -> original model
+        - {name: rng_seed, type: int, _: "42"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
+        - {name: scaling_type, type: string, _: "strong"}       # can be either weak or strong
   microcircuit:
-    repository: common
-    model_dir: Potjans_2014
     machine_parameters:
       jureca:
-        - {name: num_nodes, type: int, _: "1,2,3,4,5,6,7,8,9,10"}
+        - {name: num_nodes, type: int, _: "1"}
         - {name: tasks_per_node, type: int, _: "2"}
         - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "00:05:00"}
-        - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
-      jusuf:
-        - {name: num_nodes, type: int, _: "1,2,3,4,5,6,7,8,9,10"}
-        - {name: tasks_per_node, type: int, _: "2"}
-        - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "00:05:00"}
+        - {name: walltime, type: string, _: "00:01:00"}
         - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
     model_parameters:
       - {name: net_params, type: string, _: "network_params.py"}  # default network parameters
-      - {name: scale_N, type: float, _: "1."}  # scaling the number of neurons, 1. -> original model
-      - {name: scale_K, type: float, _: "1."}  # scaling the indegree, 1. -> original model
+      - {name: scale_N, type: float, _: "0.01"}  # scaling the number of neurons, 1. -> original model
+      - {name: scale_K, type: float, _: "0.01"}  # scaling the indegree, 1. -> original model
       - {name: poisson_input, type: string, _: "False"}  # choose Poisson or DC input
       - {name: V0_type, type: text, _: "'optimized'"}  # choose default or optimized initial conditions for the membrane potential
       - {name: synapse_type, type: text, _: "'static_synapse'"}  # type of synapses in the model
-      - {name: sim_params, _: "sim_params.py"}  # default simulation parameters
-      - {name: model_time_sim, type: float, _: "10000."}  # biological time to be simulated in ms
-      - {name: model_time_presim, _: "100."}  # in ms
-      - {name: rng_seed, _: "654,11,91856"}  # rng seed
+      - {name: sim_params, type: string, _: "sim_params.py"}  # default simulation parameters
+      - {name: model_time_sim, type: float, _: "100."}  # biological time to be simulated in ms
+      - {name: model_time_presim, type: float, _: "50."}  # in ms
+      - {name: rng_seed, type: int, _: "55"}  # rng seed
       - {name: record_spikes, type: string, _: ""}  # change to 'spike_recorder' for spike recordings
       - {name: kwds, separator: ;, type: string, _: "{}"}  # can be used for passing arguments to SetKernelStatus, such as max_buffer_size_spike_data. If no arguments should be passed leave this empty. If something should be passed insert a dictionary, eg: {'max_buffer_size_spike_data': 10}
-      - {name: scaling_type, _: "strong"}  # can be either weak or strong
-    run_parameters:
-      log_path: "data"
-      script_path: bm_run_microcircuit.py
-    results:
-      - scale
-      - rng_seed
-      - num_nodes
-      - threads_per_task
-      - tasks_per_node
-      - model_time_sim
-      - model_time_presim
-    metrics:
-      - time_construction_create
-      - time_construction_connect
-      - time_simulate
-      - time_collocate_spike_data
-      - time_communicate_spike_data
-      - time_deliver_spike_data
-      - time_update
-      - time_communicate_target_data
-      - time_gather_spike_data
-      - time_gather_target_data
-      - time_communicate_prepare
-      - py_time_kernel_prepare
-      - py_time_network_local
-      - py_time_network_global
-      - py_time_simulate
-      - py_time_presimulate
-      - py_time_network_prepare
-      - py_time_create
-      - py_time_connect_area
-      - py_time_connect_cc
-      - py_time_connect
-    metrics_sum:
-      - base_memory
-      - network_memory
-      - init_memory
-      - total_memory
-      - num_connections
-      - local_spike_counter
+      - {name: scaling_type, type: string, _: "strong"}  # can be either weak or strong
   multi_area:
-    repository: common
-    model_dir: multi-area-model
     machine_parameters:
       jureca:
-        - {name: num_nodes, type: int, _: "4,8,12,16,24,32"}
+        - {name: num_nodes, type: int, _: "1"}
         - {name: tasks_per_node, type: int, _: "2"}
         - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "02:00:00"}
-        - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
-      jusuf:
-        - {name: num_nodes, type: int, _: "4,8,12,16,24,32"}
-        - {name: tasks_per_node, type: int, _: "2"}
-        - {name: threads_per_task, type: int, _: "64"}
-        - {name: walltime, type: string, _: "02:00:00"}
+        - {name: walltime, type: string, _: "00:01:00"}
         - {name: affinity, type: string, separator: ";", _: "--cpu-bind=verbose,threads --distribution=block:cyclic:fcyclic --threads-per-core=1"}  # processor affinity/pinning
     model_parameters:
       - {name: network_state, type: string, _: "metastable"}  # can be either "metastable" or "ground"
       - {name: record_spikes, type: string, _: "False"}  # whether to write spiking output to file, either True or False
-      - {name: model_time_sim, type: float, _: "10000."}  # biological time to be simulated in ms
-      - {name: model_time_presim, type: float, _: "500."}  # presimulation time for avoiding initial transients in ms
-      - {name: scale_N, type: float, _: "1."}  # scaling the number of neurons, 1. -> original model
-      - {name: scale_K, type: float, _: "1."}  # scaling the indegree, 1. -> original model
-      - {name: rng_seed, _: "654,11,91856"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
-      - {name: scaling_type, _: "strong"}  # can be either weak or strong
-    run_parameters:
-      log_path: "data/${data_folder_hash}/recordings"
-      script_path: run_benchmark.py
-      optional_run_command: |+
-        data_folder_hash=$(uuidgen)
-        mkdir -p ${jube_wp_abspath}/data
-        srun -n 1 --nodes 1 python ${model_path}/run_benchmark_createParams.py ${scale} ${num_vps} ${model_time_sim} ${scale_K} ${jube_wp_abspath}/data ${data_folder_hash} ${network_state} ${rng_seed} ${model_time_presim} ${record_spikes}
-      run_args: ${jube_wp_abspath}/data ${data_folder_hash} ${network_state}
-    results:
-      - scale
-      - rng_seed
-      - num_nodes
-      - threads_per_task
-      - tasks_per_node
-      - model_time_sim
-      - model_time_presim
-    metrics:
-      - time_construction_create
-      - time_construction_connect
-      - time_simulate
-      - time_collocate_spike_data
-      - time_communicate_spike_data
-      - time_deliver_spike_data
-      - time_update
-      - time_communicate_target_data
-      - time_gather_spike_data
-      - time_gather_target_data
-      - time_communicate_prepare
-      - py_time_kernel_prepare
-      - py_time_network_local
-      - py_time_network_global
-      - py_time_simulate
-      - py_time_presimulate
-      - py_time_network_prepare
-      - py_time_create
-      - py_time_connect_area
-      - py_time_connect_cc
-      - py_time_connect
-    metrics_sum:
-      - base_memory
-      - network_memory
-      - init_memory
-      - total_memory
-      - num_connections
-      - local_spike_counter
+      - {name: model_time_sim, type: float, _: "100."}  # biological time to be simulated in ms
+      - {name: model_time_presim, type: float, _: "50."}  # presimulation time for avoiding initial transients in ms
+      - {name: scale_N, type: float, _: "0.01"}  # scaling the number of neurons, 1. -> original model
+      - {name: scale_K, type: float, _: "0.01"}  # scaling the indegree, 1. -> original model
+      - {name: rng_seed, type: int, _: "55"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
+      - {name: scaling_type, type: string, _: "strong"}  # can be either weak or strong
 user_config:
   jureca:
     account: "jinb33"  # slurm account name for job submission
     partition: "dc-cpu"  # cluster partition, takes system default if left empty
-    build-time-limit: "00:10:00"
   jusuf:
     account:  "icei-hbp-2020-0005"
     partition: "batch"
-    build-time-limit: "00:10:00"
-dependencies: dependencies2.yml
