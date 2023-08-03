@@ -65,12 +65,12 @@ benchmarks:
     model_parameters:
       - {name: network_state, type: string, _: "metastable"}  # can be either "metastable" or "ground"
       - {name: record_spikes, type: string, _: "False"}  # whether to write spiking output to file, either True or False
-      - {name: model_time_sim, type: float, _: "10."}  # biological time to be simulated in ms
-      - {name: model_time_presim, type: float, _: "5."}  # presimulation time for avoiding initial transients in ms
-      - {name: scale_N, type: float, _: "0.01"}  # scaling the number of neurons, 1. -> original model
-      - {name: scale_K, type: float, _: "0.01"}  # scaling the indegree, 1. -> original model
-      - {name: rng_seed, type: int, _: "55"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
-      - {name: scaling_type, type: string, _: "strong"}  # can be either weak or strong
+      - {name: model_time_sim, type: float, _: "10000."}  # biological time to be simulated in ms
+      - {name: model_time_presim, type: float, _: "500."}  # presimulation time for avoiding initial transients in ms
+      - {name: scale_N, type: float, _: "1."}  # scaling the number of neurons, 1. -> original model
+      - {name: scale_K, type: float, _: "1."}  # scaling the indegree, 1. -> original model
+      - {name: rng_seed, _: "654,11,91856"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
+      - {name: scaling_type, _: "strong"}  # can be either weak or strong
 user_config:
   jureca:
     account: "jinb33"  # slurm account name for job submission
