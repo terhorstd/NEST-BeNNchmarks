@@ -56,12 +56,12 @@ benchmarks:
         num_nodes: "4"
         tasks_per_node: "2"
         threads_per_task: "64"
-        walltime: "01:00:00"
+        walltime: "00:01:00"
       jusuf:
         num_nodes: "4"
         tasks_per_node: "2"
         threads_per_task: "64"
-        walltime: "01:00:00"
+        walltime: "00:01:00"
     model_parameters:
       - {name: network_state, type: string, _: "metastable"}  # can be either "metastable" or "ground"
       - {name: record_spikes, type: string, _: "False"}  # whether to write spiking output to file, either True or False
