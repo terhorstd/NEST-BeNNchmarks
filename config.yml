@@ -11,7 +11,7 @@ benchmarks:
       jureca:
         num_nodes: "1"
         tasks_per_node: "2"
-        threads_per_task: "64"
+        threads_per_task: "32,64"
         walltime: "00:01:00"
       jusuf:
         num_nodes: "1"
@@ -21,7 +21,7 @@ benchmarks:
       model_parameters:
         - {name: model_time_sim, type: float, _: "90."}        # biological time to be simulated in ms
         - {name: model_time_presim, type: float, _: "10."}     # presimulation time for avoiding initial transients in ms
-        - {name: scale, type: float, _: "0.01"}                 # scaling the number of neurons, 1. -> original model
+        - {name: scale, type: float, _: "0.01*$threads_per_task"}                 # scaling the number of neurons, 1. -> original model
         - {name: rng_seed, type: int, _: "42"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
   microcircuit:
     machine_parameters:
