@@ -47,12 +47,12 @@ benchmarks:
         num_nodes: "4"
         tasks_per_node: "2"
         threads_per_task: "64"
-        walltime: "00:01:00"
+        walltime: "00:10:00"
       jusuf:
         num_nodes: "4"
         tasks_per_node: "2"
         threads_per_task: "64"
-        walltime: "00:01:00"
+        walltime: "00:10:00"
     model_parameters:
       - {name: model_time_sim, type: float, _: "10000."}  # biological time to be simulated in ms
       - {name: model_time_presim, type: float, _: "500."}  # presimulation time for avoiding initial transients in ms
