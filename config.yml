@@ -11,7 +11,7 @@ benchmarks:
       jureca:
         num_nodes: "1"
         tasks_per_node: "2"
-        threads_per_task: "32,64"
+        threads_per_task: "64"
         walltime: "00:01:00"
       jusuf:
         num_nodes: "1"
