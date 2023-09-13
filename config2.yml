@@ -23,6 +23,7 @@ benchmarks:
       - {name: model_time_presim, type: float, _: "10."}     # presimulation time for avoiding initial transients in ms
       - {name: scale, type: float, _: "0.01"}                 # scaling the number of neurons, 1. -> original model
       - {name: rng_seed, type: int, _: "42"}                  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
+      - {name: kwds, separator: ;, type: string, _: "{}"}
   microcircuit:
     machine_parameters:
       jureca:
@@ -41,6 +42,7 @@ benchmarks:
       - {name: model_time_sim, type: float, _: "100."}  # biological time to be simulated in ms
       - {name: model_time_presim, type: float, _: "50."}  # in ms
       - {name: rng_seed, type: int, _: "55"}  # rng seed
+      - {name: kwds, separator: ;, type: string, _: "{}"}
   multi_area:
     machine_parameters:
       jureca:
@@ -59,6 +61,7 @@ benchmarks:
       - {name: scale_N, type: float, _: "0.01"}  # scaling the number of neurons, 1. -> original model
       - {name: scale_K, type: float, _: "0.01"}  # scaling the indegree, 1. -> original model
       - {name: rng_seed, type: int, _: "55"}  # rng seed for NEST, accepts a list in the format a,b,c,... for generating multiple runs
+      - {name: kwds, separator: ;, type: string, _: "{}"}
 user_config:
   jureca:
     account: "jinb33"  # slurm account name for job submission
