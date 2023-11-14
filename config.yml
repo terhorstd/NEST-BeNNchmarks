@@ -69,3 +69,4 @@ user_config:
   jusuf:
     account:  "icei-hbp-2020-0005"
     partition: "batch"
+dependencies: dependencies.yml

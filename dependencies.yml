@@ -1,0 +1,66 @@
+modules: &module-list >-
+  Stages/2023
+  GCCcore/.11.3.0
+  GCC/11.3.0
+  CMake/3.23.1
+  ParaStationMPI/5.8.0-1
+  Python/3.10.4
+  PyYAML/6.0
+  SciPy-bundle/2022.05
+  matplotlib/3.5.2
+  mpi4py/3.1.4
+  GSL/2.7
+  jemalloc/5.3.0
+  Boost/1.79.0
+  Autotools/20220317
+  git/2.36.0-nodocs
+  IPython/8.5.0
+  JUBE/2.5.1
+pip: &pip-list >-
+  future
+  nested_dict
+  dicthash
+  jupyter
+  nbconvert
+jureca:
+  variables:
+    TEMP_DIR: "$$SCRATCH_cjinb33/ci-bennch/jureca/userdata"   # Directory to temporary files accessible from both login and compute nodes
+    USERSOFTWARE_DIR: "$$USERSOFTWARE_djinb33/ci-bennch/jureca"
+    MODULE_LIST: *module-list
+    PIP_LIST: *pip-list
+  vars:
+    - 'eval TEMP_DIR="$TEMP_DIR"'
+    - 'eval USERSOFTWARE_DIR="$USERSOFTWARE_DIR"'
+    - 'jutil env activate -p cjinb33'
+    - 'jutil env activate -p djinb33'
+  init:
+    - 'module load $MODULE_LIST'
+    - 'python -m venv --system-site-packages benchmarking-env'
+    - 'benchmarking-env/bin/pip install $PIP_LIST'
+    - 'ln -s "$USERSOFTWARE_DIR/builder/build.sh" "$(pwd)/build"'
+  load:
+    - 'module load $MODULE_LIST'
+    - 'source benchmarking-env/bin/activate'
+    - 'export PYTHONPATH="$PYTHONPATH:$USERSOFTWARE_DIR/bennchplot/"'
+    - 'export PATH="$(pwd):$USERSOFTWARE_DIR/git-annex:$PATH"'
+jusuf:
+  variables:
+    TEMP_DIR: "$$SCRATCH_cjinb33/ci-bennch/jusuf/userdata"   # Directory to temporary files accessible from both login and compute nodes
+    USERSOFTWARE_DIR: "$$USERSOFTWARE_djinb33/ci-bennch/jusuf"
+    MODULE_LIST: *module-list
+    PIP_LIST: *pip-list
+  vars:
+    - 'eval TEMP_DIR="$TEMP_DIR"'
+    - 'eval USERSOFTWARE_DIR="$USERSOFTWARE_DIR"'
+    - 'jutil env activate -p icei-hbp-2020-0005'
+    - 'jutil env activate -p djinb33'
+  init:
+    - 'module load $MODULE_LIST'
+    - 'python -m venv --system-site-packages benchmarking-env'
+    - 'benchmarking-env/bin/pip install $PIP_LIST'
+    - 'ln -s "$USERSOFTWARE_DIR/builder/build.sh" "$(pwd)/build"'
+  load:
+    - 'module load $MODULE_LIST'
+    - 'source benchmarking-env/bin/activate'
+    - 'export PYTHONPATH="$PYTHONPATH:$USERSOFTWARE_DIR/bennchplot/"'
+    - 'export PATH="$(pwd):$USERSOFTWARE_DIR/git-annex:$PATH"'
